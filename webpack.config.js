@@ -1,28 +1,37 @@
 const path = require('path');
-const cssExtract = require('mini-css-extract-plugin');
+const miniCss = require('mini-css-extract-plugin');
 
 const babel = {
     test: /\.js$/,
     exclude: /node_modules/,
-    loader: 'babel-loader'
+    use: 'babel-loader'
 };
+
+const cssLoader =  {
+    loader: 'css-loader',
+    options: {
+        modules: true,
+    }
+};
+
 const sass = {
     test: /\.s[ac]ss$/i,
     use: [
-        cssExtract.loader,
-        // 'style-loader',
-        'css-loader',
+        miniCss.loader,
+        cssLoader,
         'sass-loader',
     ],
     exclude: /node_modules/,
 };
 
 const css = {
-    test: /\.css$/i,
-    use: ['style-loader', 'css-loader']
+    test: /\.css$/,
+    // exclude: /node_modules/,
+    use: [
+        miniCss.loader,
+        cssLoader
+    ]
 };
-
-
 
 module.exports = {
     entry: "./src/app.js",
@@ -33,7 +42,9 @@ module.exports = {
     module: {
         rules: [
             babel,
+            css,
             sass
+
         ]
     },
     plugins: [
@@ -43,7 +54,7 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.html'
         }),
-        new cssExtract({
+        new miniCss({
             filename: '[name].css',
             chunkFilename: '[id].css',
             ignoreOrder: false,

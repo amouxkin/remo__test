@@ -1,0 +1,36 @@
+@import "../../app";
+
+.container {
+  display: flex;
+  height: 4rem;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+
+  .menu{
+    padding-left: 1rem;
+    flex: 1;
+
+    svg{
+      fill: dimgrey;
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}
+
+.circular{
+  @extend %shadow__low;
+  background-color: white;
+  border-radius: 100%;
+  border: 0px;
+  height: 2rem;
+  width: 2rem;
+}
+
+.center{
+  background-color: red;
+  height: 2rem;
+  min-width: 2rem;
+  flex: 5;
+}
