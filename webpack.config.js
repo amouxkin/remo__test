@@ -44,7 +44,6 @@ module.exports = {
             babel,
             css,
             sass
-
         ]
     },
     plugins: [
