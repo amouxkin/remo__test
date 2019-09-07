@@ -13,10 +13,10 @@ export default () => (
 
         <div className={s.center}>
             {banner}
-
         </div>
 
         <div className={s.user}>
+            {userSignal}
             {userIcon}
         </div>
     </div>
@@ -40,12 +40,13 @@ const banner = (<div className={s.banner}>
         </div>
     </div>);
 
-const userIcon =  (<div className={s.user}>
+const userIcon =  (<div className={[s.avatar, s.green].join(" ")}>
 
 </div>);
 
 const userSignal = (
-    <div>
-
+    <div className={s.signal}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 4h3v16h-3zM5 14h3v6H5zm6-5h3v11h-3z"/></svg>
+        {/*<object type="text/svg" data="/assets/bars-solid.svg"></object>*/}
     </div>
 );

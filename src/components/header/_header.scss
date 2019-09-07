@@ -12,15 +12,18 @@
 .container {
   display: flex;
   height: 4rem;
-  background-color: white;
+  background-color: $color__background;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $dept__control;
 }
 
 .menu{
   @extend %flex-side;
   padding-left: 1rem;
-  flex: 2;
 
   svg{
     fill: dimgrey;
@@ -59,8 +62,25 @@
 
 .user{
   @extend %flex-side;
-  background-color: dimgrey;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
+.signal{
+  @extend .circular;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  svg{
+    fill: darkorange;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
 }
 
 .banner{
@@ -78,8 +98,8 @@
 
   .logo{
     @extend %font__logo;
-    color: $primary-color;
-    background-color: $secondary-color;
+    color: $color__primary;
+    background-color: $color__secondary;
     font-size: 1.2rem;
     border-radius: 2rem;
     padding: .2rem .5rem;
@@ -92,4 +112,16 @@
     padding-right: .5rem;
     align-self: center;
   }
+}
+
+.avatar{
+  @extend .circular;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.green {
+  border: .2rem seagreen solid;
 }
