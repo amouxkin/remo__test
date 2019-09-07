@@ -1,0 +1,42 @@
+@import "../../theme";
+
+.container{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.question{
+  @extend %shadow__low;
+  @extend %button__circular;
+
+  align-items: center;
+  background-color: $color__secondary;
+  display: flex;
+  justify-content: center;
+
+  svg{
+    height: 2rem;
+    width: 2rem;
+    fill: $color__primary;
+  }
+}
+
+.row__left{
+  align-items: center;
+  display: flex;
+  flex:1;
+  justify-content: flex-start;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.row__right{
+  align-items: flex-end;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
