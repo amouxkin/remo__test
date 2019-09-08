@@ -1,21 +1,22 @@
 @import "../../theme";
 
+%button{
+  @extend %shadow__low;
+  @extend %button__circular;
+}
+
 .container{
+  @extend %flex__bottom;
   position: fixed;
-  bottom: 0;
-  display: flex;
-  padding-bottom: 1rem;
+  bottom: 1rem;
+
   width: 100%;
 }
 
 .question{
-  @extend %shadow__low;
-  @extend %button__circular;
-
-  align-items: center;
+  @extend %button;
+  @extend %flex__center;
   background-color: $color__secondary;
-  display: flex;
-  justify-content: center;
 
   svg{
     height: 2rem;
@@ -25,18 +26,92 @@
 }
 
 .row__left{
-  align-items: center;
-  display: flex;
+  @extend %flex__center;
   flex:1;
   justify-content: flex-start;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  padding-left: 1rem;
 }
 
 .row__right{
   align-items: flex-end;
-  display: flex;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 3rem repeat(3, 2rem);
+  grid-column-gap: .5rem;
+  justify-content: flex-end;
+  padding-right: 1rem;
+
+  %button__right{
+    @extend %button;
+    @extend %flex__center;
+    background-color: $color__on--secondary;
+    margin-top: .5rem;
+    svg{
+      height: 1.5rem;
+      width: 1.5rem;
+      fill: $color__primary;
+    }
+  }
+
+  .emoticon{
+    @extend %shadow__low;
+    @extend %flex__center;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 3rem;
+    background-color: $color__primary;
+    .arrow{
+      @extend %button;
+      @extend %flex__center;
+      font-size: xx-small;
+      height: 1.25rem;
+      left: - .75rem;
+      position: relative;
+      width: 1.25rem;
+      z-index: $dept__controls * 2;
+
+      svg{
+        height: .7rem;
+        width: .7rem;
+        padding-right: .1rem;
+      }
+    }
+  }
+
+  .volume{
+    @extend %button__right;
+    background-color: $color__on--primary;
+
+  }
+
+  .microphone{
+    @extend %button__right;
+  }
+
+  .column{
+    @extend %flex__center;
+    flex-direction: column;
+
+    .camera{
+      @extend %button__right;
+    }
+
+    .screen{
+      @extend %button__right;
+      svg{
+        height: 1.4rem;
+        width: 1.4rem;
+      }
+    }
+
+    .message{
+      @extend %button__right;
+      background-color: $color__on--primary;
+
+      svg{
+        height: 1.4rem;
+        width: 1.4rem;
+      }
+    }
+  }
 }

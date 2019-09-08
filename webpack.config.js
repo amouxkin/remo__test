@@ -10,7 +10,9 @@ const babel = {
 const cssLoader =  {
     loader: 'css-loader',
     options: {
-        modules: true,
+        modules: {
+            localIdentName: '[path][name][hash:base64:5]'
+        },
     }
 };
 

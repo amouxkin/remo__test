@@ -27,10 +27,10 @@ $color__primary: white;
 $color__secondary: #fe808e;
 //$color__secondary__variant: #fe808e;
 $color__background: white;
-//$color__surface: white;
+$color__surface: #e2ffcf;
 //$color__error: red;
-//$color__on--primary: white;
-//$color__on--secondary: black;
+$color__on--primary: #7EDA80;
+$color__on--secondary: #7E8E7A;
 //$color__on--background: black;
 //$color__on--surface: black;
 //$color__on-error: white;
@@ -54,4 +54,16 @@ $dept__controls: 10;
 %shadow__medium {
   @extend %shadow__transition;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+%flex__center{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+%flex__bottom{
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
 }
