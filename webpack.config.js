@@ -21,7 +21,8 @@ const sass = {
     use: [
         miniCss.loader,
         cssLoader,
-        'sass-loader',
+        'postcss-loader',
+        'sass-loader'
     ],
     exclude: /node_modules/,
 };
@@ -31,7 +32,8 @@ const css = {
     // exclude: /node_modules/,
     use: [
         miniCss.loader,
-        cssLoader
+        cssLoader,
+        'postcss-loader'
     ]
 };
 
@@ -59,7 +61,8 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
             ignoreOrder: false,
-        })
+        }),
+        require('autoprefixer')
     ],
     watch: true,
     watchOptions: {

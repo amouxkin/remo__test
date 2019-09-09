@@ -1,0 +1,31 @@
+@import "../../theme";
+
+.container{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  top:0;
+  width: 100%;
+  z-index: $dept__controls;
+}
+
+.controller{
+  @extend %shadow__low;
+  background-color: $color__background;
+  border-radius: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 10rem);
+  grid-template-rows: 50% 50% ;
+  grid-row-gap: 1rem;
+  padding: 2rem;
+  width: auto;
+}
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
