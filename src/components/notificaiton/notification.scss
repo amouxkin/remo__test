@@ -1,0 +1,135 @@
+@import "../../theme";
+
+.container{
+  @extend %flex__center;
+  @extend %shadow__medium;
+
+  animation-name: pop, pop--reverse;
+  animation-delay: 0s, 4s;
+  animation-duration: .5s, .5s;
+  animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 2rem;
+  height: 4rem;
+  width: 12rem;
+  margin-bottom: 2rem;
+}
+
+@keyframes pop {
+  0% {
+    filter: alpha(0);
+    height: 0;
+    width: 0;
+  }
+  25%{
+    filter: alpha(1);
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+@keyframes pop--reverse {
+  0%{
+
+  }
+  25%{
+    height: 4rem;
+    width: 4rem;
+    filter: alpha(1);
+  }
+  100% {
+    filter: alpha(0);
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes icon {
+  0%{
+    filter: alpha(0);
+    margin-left: 0rem;
+  }
+  20%{
+    filter: alpha(0);
+    margin-left: 0rem;
+  }
+  40%{
+    filter: alpha(1);
+    margin-left: -1.5rem;
+  }
+  100%{
+    filter: alpha(1);
+    margin-left: -1.5rem;
+
+  }
+}
+
+@keyframes icon--reverse {
+  0%{
+    filter: alpha(1);
+    margin-left: -1.5rem;
+  }
+  100%{
+    margin-left: +1.5rem;
+    filter: alpha(0);
+  }
+}
+
+.icon{
+  @extend %flex__center;
+  @extend %shadow__low;
+
+  animation-name: icon, icon--reverse;
+  animation-duration: .5s, .5s;
+  animation-delay: 0s, 3.75s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 2rem;
+
+  margin-left: -1.5rem;
+  height: 3rem;
+  width: 3rem;
+
+  img{
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+@keyframes message {
+  from{
+    filter: alpha(0);
+  }
+
+  to{
+    filter: alpha(1);
+  }
+}
+
+@keyframes message--reverse {
+  from{
+    filter: alpha(1);
+  }
+
+  to{
+    filter: alpha(0);
+    display: none;
+  }
+}
+
+.message{
+  @extend %font__main;
+  @extend %flex__center;
+
+  animation-name: message, message--reverse;
+  animation-duration: .5s;
+  animation-delay: .5s, 3.55s;
+  animation-fill-mode: forwards;
+  flex: 1;
+  filter: alpha(0);
+  padding: 1rem;
+  font-size: small;
+  width: 10rem;
+  height: 4rem;
+}

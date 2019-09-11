@@ -4,22 +4,21 @@ import s from './_notification__area.scss';
 import Notification from "../notificaiton/notification";
 
 export default class NotificationArea extends React.Component{
-
     render() {
         return(
             <div className={s.container}>
-                <div>
-                    Notification area
-                </div>
-                {/*{ notificationBuilder(this.props.notifications)}*/}
-                <Notification  />
+                {
+                    Object.keys(this.props.notifications).map((k)=>{
+                        const values = this.props.notifications[k];
+                        return <Notification removeFunc={()=>this.props.deleteFunc(k)} key={"notification_" + k} icon={values.icon} message={values.message}/>;
+                    })
+                }
             </div>
         );
     }
 }
 
 NotificationArea.propTypes = {
-    notifications: PropTypes.object
-}
-
-// const notificationBuilder = (n) => n.keys.map((k) =>/>);
+    notifications: PropTypes.object,
+    deleteFunc: PropTypes.func
+};

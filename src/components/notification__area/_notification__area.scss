@@ -3,11 +3,14 @@
 .container{
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: auto;
   min-height: 30rem;
   position: absolute;
   right: 0;
   top: 10rem;
+  overflow: hidden;
   width: 16rem;
+  z-index: $dept__controls * 2;
 }

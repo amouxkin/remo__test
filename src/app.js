@@ -6,6 +6,7 @@ import Controls from './components/controls/controls';
 import NotificationTester from './components/notification__tester/notification__tester';
 import NotificationArea from './components/notification__area/notification__area';
 
+
 import s from './app.scss';
 import 'normalize.css';
 
@@ -16,24 +17,44 @@ class App extends React.Component{
             notifications: {
             }
         };
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('com');
-        // console.log(prevState.notifications);
+
+        function idGenerator() {
+            // return Object.keys(this.state.notifications).length + math.;
+            return Date.now().toString();
+        }
+
+        this.addNotification = function (icon, message) {
+            this.setState((prevState, props) => {
+                return {
+                    notifications: {
+                        ...(prevState.notifications),
+                        [idGenerator()]: {
+                            icon: icon,
+                            message: message
+                        }
+                    }
+                };})
+        }
+
+        this.removeNotification = function(id) {
+            this.setState((prevState, props)=>{
+                let newList = prevState.notifications;
+                delete newList[id];
+                return {
+                    notifications: newList
+                };
+            });
+        }
     }
 
-    addNotification (id, newNotification) {
-        this.setState({
-            notifications: {
-                ...(this.state.notifications),
-                id: newNotification}
+    componentDidMount() {
+        Notification.requestPermission(function(status) {
+            if (Notification.permission === "denied") {
+                alert("Notifications blocked. Please enable them in your browser manually.");
+            }
+            console.log("Permission granted");
         });
     }
-
-    removeNotification(id) {
-
-    }
-
 
     render() {
         return(
@@ -41,7 +62,7 @@ class App extends React.Component{
                 <Header/>
                 <Controls/>
                 <NotificationTester adder={this.addNotification.bind(this)}/>
-                <NotificationArea notifications={this.state.notifications}/>
+                <NotificationArea notifications={this.state.notifications} deleteFunc={this.removeNotification.bind(this)}/>
             </div>
         );
     }
